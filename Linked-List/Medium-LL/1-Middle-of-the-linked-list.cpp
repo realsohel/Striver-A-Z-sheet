@@ -12,6 +12,28 @@ struct ListNode {
 
 class Solution {
 public:
+
+// Approach - 2
+// Time = O(N)
+// Space = O(1)
+    ListNode* middleNode(ListNode* head) {
+        if(head->next==NULL)
+            return head;
+
+        ListNode* slow=head;
+        ListNode* fast=head;
+
+        while(fast!=NULL and fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+
+        return slow;
+    }
+
+// Approach - 1
+// Time = O(2N) ~~O(N)
+// Space = O(1)
     ListNode* middleNode(ListNode* head) {
         if(head->next==NULL){
             return head;
