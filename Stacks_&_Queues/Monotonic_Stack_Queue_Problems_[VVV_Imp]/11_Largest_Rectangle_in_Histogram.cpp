@@ -13,11 +13,11 @@ public:
         int maxi=0;
 
         for(int i=0;i<n;i++){
-            while(!stk.empty() and heights[i]>=heights[stk.top()]){
+            while(!stk.empty() and heights[i]<heights[stk.top()]){
                 int el = heights[stk.top()];
+                stk.pop();
                 int nse= i;
                 int pse= stk.empty() ? -1:stk.top();
-                stk.pop();
                 
                 maxi = max(maxi, el*(nse-pse-1));
             }
@@ -27,9 +27,9 @@ public:
 
         while(!stk.empty()){
             int el = heights[stk.top()];
+            stk.pop();
             int nse= n;
             int pse= stk.empty() ? -1:stk.top();
-            stk.pop();
                 
             maxi = max(maxi, el*(nse-pse-1));
         }
